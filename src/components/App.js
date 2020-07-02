@@ -5,30 +5,25 @@ import { RouteNode } from 'react-router5';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Redirect
+    Route
   } from "react-router-dom";
 
 import '../style/main.css';
 
-import LoginPage from './LoginPage';
+import styles from '../style/FriendListApp.css';
 
 class App extends Component {
 
     render() {
-        const isAuthenticated = false;
-
         return (
             <Router>
               <Switch>
-                <Route path="/auth">
-                  <LoginPage />
-                </Route>
                 <Route exact path="/">
-                  <p>Load...</p>
+                  <div className={styles.friendListApp}>
+                    <h1>The FriendList</h1>
+                  </div>
                 </Route>
               </Switch>
-              {/* {!isAuthenticated && <Redirect to={{ pathname: "/auth" }} />} */}
             </Router>
         );
     }
