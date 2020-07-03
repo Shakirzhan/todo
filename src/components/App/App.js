@@ -4,13 +4,16 @@ import { connect } from 'react-redux';
 import { PrivateRoute } from '../PrivateRoute';
 import { history } from '../../helpers';
 
+import { HomePage } from '../HomePage';
+import { LoginPage } from '../LoginPage';
+
 class App extends React.Component {
     render() {
         return (
           <Router history={history}>
               <div>
-                  <PrivateRoute exact path="/" component={() => <div>Home</div>} />
-                  <Route path="/login" component={() => <div>Login</div>} />
+                  <PrivateRoute exact path="/" component={() => <HomePage />} />
+                  <Route path="/login" component={() => <LoginPage />} />
               </div>
           </Router>
         );
