@@ -1,24 +1,5 @@
-Redux Tutorial : Friend list demo
-=====================
+# react-redux-jwt-authentication-example
 
-This repository is the source code for the blog post ["Getting started with Redux"](http://www.jchapron.com/2015/08/14/getting-started-with-redux/) (08/2015).
+React + Redux - JWT Authentication Tutorial & Example
 
-You can follow along the tutorial or download this code and play with the demo.
-
-### Usage
-
-```
-npm install
-DEBUG=true npm start
-open http://localhost:3000
-```
-
-If you are on windows, run `set DEBUG=true && npm start` instead.
-
-### Dependencies
-
-* React
-* Webpack
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
-* [babel-loader](https://github.com/babel/babel-loader)
-* [react-hot-loader](https://github.com/gaearon/react-hot-loader)
+For documentation and further details go to https://jasonwatmore.com/post/2017/12/07/react-redux-jwt-authentication-tutorial-example
