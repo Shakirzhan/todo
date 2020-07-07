@@ -19,7 +19,7 @@ class HomePage extends Component {
               
             }}
             >
-              <div style={{marginLeft: '44%'}}>
+              <div style={{width: '100%'}}>
                 <h1 style={{ textAlign: 'center', color: 'rgb(97, 97, 97)'}}>
                   Todo List 
                 </h1>
@@ -29,19 +29,29 @@ class HomePage extends Component {
               <div>
                 <form id="myForm">
                   {/* <Paper style={{width: '90%', leftMargin: '15px'}} zDepth={1}> */}
-                    <div style={{marginLeft: '10px'}}>
-                      <TextField 
-                        hintText="What needs to be done?"
-                        className="AddText" 
+                    <div>
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
                         fullWidth
+                        id="email"
+                        label="What needs to be done?"
+                        name="email"
+                        autoComplete="email"
+                        autoFocus
                       />
                     </div>
                   {/* </Paper> */}
                   <br/>
-                  <Button 
-                    type="submit" 
-                    label='Add todo' 
-                    />
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                    >
+                      Add todo
+                    </Button>
                 </form>
               </div>
         
