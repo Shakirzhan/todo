@@ -14,11 +14,31 @@ export const userActions = {
 function login(login, password) {
     return dispatch => {
         userService.login(login, password)
+        .then(user => {
+            dispatch(loginSuccess(user));
+            history.push('/');
+        }, error => {
+            dispatch(loginFailure(error));
+            dispatch(alertActions.error(Object.assign({}, error)));
+        });
     };
 
-    function request(user) { return { type: constants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: constants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: constants.LOGIN_FAILURE, error } }
+    //function request(user) { return { type: constants.LOGIN_REQUEST, user } }
+    
+}
+
+function loginSuccess(user) { 
+    return { 
+        type: constants.LOGIN_SUCCESS, 
+        user 
+    } 
+}
+
+function loginFailure(error) { 
+    return { 
+        type: constants.LOGIN_FAILURE, 
+        error 
+    } 
 }
 
 function logout() {

@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PrivateRoute } from '../PrivateRoute';
+import { LoggedRoute } from '../LoggedRoute';
 import { history } from '../../helpers';
 
 import { HomePage } from '../HomePage';
@@ -13,7 +14,7 @@ class App extends React.Component {
           <Router history={history}>
               <div>
                   <PrivateRoute exact path="/" component={() => <HomePage />} />
-                  <Route path="/login" component={() => <LoginPage />} />
+                  <LoggedRoute exact path="/login" component={() => <LoginPage />} />
               </div>
           </Router>
         );

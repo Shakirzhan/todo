@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Alert from '@material-ui/lab/Alert';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
@@ -75,7 +76,9 @@ function handleSubmit(e, props) {
 function SignInSide(props) {
   const classes = useStyles();
 
-  const { login, password, dispatch } = props;
+  const { login, password, dispatch, alert } = props;
+
+  //console.log('1111', alert && alert.message);
 
   const actions = bindActionCreators(userActions, dispatch);
   
@@ -92,6 +95,8 @@ function SignInSide(props) {
             Sign in
           </Typography>
           <form className={classes.form} noValidate onSubmit={(e) => handleSubmit(e, props)}>
+            {alert && <Alert severity="error">{alert.message}</Alert>}
+            
             <TextField
               variant="outlined"
               margin="normal"
@@ -117,10 +122,10 @@ function SignInSide(props) {
               onChange={(e) => actions.changePassword(e.target.value)}
               autoComplete="current-password"
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
@@ -132,14 +137,14 @@ function SignInSide(props) {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                {/* <Link href="#" variant="body2">
                   Forgot password?
-                </Link>
+                </Link> */}
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                {/* <Link href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
-                </Link>
+                </Link> */}
               </Grid>
             </Grid>
             <Box mt={5}>
@@ -155,7 +160,8 @@ function SignInSide(props) {
 function mapStateToProps(state) {
   return {
     login: state.authentication.login,
-    password: state.authentication.password
+    password: state.authentication.password,
+    alert: state.alert && state.alert.message && state.alert.message.response.data[0]
   };
 }
 
