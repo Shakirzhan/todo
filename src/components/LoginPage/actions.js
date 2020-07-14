@@ -47,6 +47,7 @@ function loginFailure(error) {
 
 function logout() {
     userService.logout();
+    history.push('/');
     return { type: types.LOGOUT };
 }
 

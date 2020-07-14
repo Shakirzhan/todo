@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import { TodoComponentList } from './TodoComponentList';
 import * as ItemsActions from './actions';
+import { userActions } from '../LoginPage/actions';
 
 class TodoComponentInput extends Component {
   state = {
@@ -25,6 +26,11 @@ class TodoComponentInput extends Component {
     const { dispatch } = this.props;
     const action = bindActionCreators(ItemsActions, dispatch);
     action.deleteItemAll();
+  }
+
+  onLogout = () => {
+    const { dispatch } = this.props;
+    dispatch(userActions.logout());
   }
 
   render () {
@@ -65,8 +71,18 @@ class TodoComponentInput extends Component {
           variant="contained"
           color="primary"
           onClick={this.onDelete}
+          style={{marginBottom: 10}}
         >
           Удалить
+        </Button>
+
+        <Button
+          fullWidth
+          variant="contained"
+          color="primary"
+          onClick={this.onLogout}
+        >
+          Выйти
         </Button>
       </form>
     );
