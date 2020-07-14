@@ -7,8 +7,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --open",
-    "heroku-postbuild": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open --host 192.168.0.105 --port 90"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",

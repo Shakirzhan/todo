@@ -1,22 +1,19 @@
 import * as types from './constants';
-//import omit from 'lodash/omit';
-import assign from 'lodash/assign';
-import mapValues from 'lodash/mapValues';
 
 const initialState = {
   friends: [],
   friendsById: [
     {
       id: 1,
-      name: 'Theodore Roosevelt'
+      name: 'Хлеб'
     },
     {
       id: 2,
-      name: 'Abraham Lincoln'
+      name: 'Молоко'
     },
     {
       id: 3,
-      name: 'George Washington'
+      name: 'Спички'
     }
   ]
 };

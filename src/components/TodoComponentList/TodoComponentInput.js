@@ -39,7 +39,7 @@ class TodoComponentInput extends Component {
             required
             fullWidth
             id="email"
-            label="What needs to be done?"
+            label="Добавьте в список"
             name="email"
             autoComplete="email"
             autoFocus
@@ -57,7 +57,7 @@ class TodoComponentInput extends Component {
           color="primary"
           style={{marginBottom: 10}}
         >
-          Add todo
+          Добавить
         </Button>
 
         <Button
@@ -66,7 +66,7 @@ class TodoComponentInput extends Component {
           color="primary"
           onClick={this.onDelete}
         >
-          Delete
+          Удалить
         </Button>
       </form>
     );

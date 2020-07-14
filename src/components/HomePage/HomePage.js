@@ -22,7 +22,7 @@ class HomePage extends Component {
             >
               <div style={{width: '100%'}}>
                 <h1 style={{ textAlign: 'center', color: 'rgb(97, 97, 97)'}}>
-                  Todo List 
+                  Список дел
                 </h1>
               </div>
             </div>
