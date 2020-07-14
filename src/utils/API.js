@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://hack/api/"
+  baseURL: "http://shakirzhan.ru/api/"
 });
