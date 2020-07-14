@@ -17,8 +17,6 @@ module.exports = {
         template: './src/index.html'
     })],
     devServer: {
-        historyApiFallback: true,
-        port: 443,
-        host: 'shakirzhan.herokuapp.com'
+        historyApiFallback: true
     }
 }
