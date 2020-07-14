@@ -6,18 +6,42 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import DeleteOutlined from "@material-ui/icons/DeleteOutlined";
 
+import { bindActionCreators } from 'redux';
+
 import { connect } from 'react-redux';
 
+import * as FriendsActions from './actions';
+
 class TodoComponentItem extends Component {
+  onDeleteFriend = () => {
+    const { dispatch, id } = this.props;
+    const action = bindActionCreators(FriendsActions, dispatch);
+    action.deleteFriend(id);
+  }
+
+  onChangeCheckbox = () => {
+    const { dispatch, id, friendList: { friends } } = this.props;
+    const action = bindActionCreators(FriendsActions, dispatch);
+    if(!friends.find(friend => friend === id)) {
+      action.addFriendCheckbox(id);
+    } else {
+      action.deleteFriendCheckbox(id);
+    }
+  }
+
   render() {
+    const { name, id, friendList: { friends } } = this.props;
+    
     return (
       <ListItem>
         <Checkbox
           disableRipple
+          checked={ !!friends.find(friend => friend === id) }
+          onChange={this.onChangeCheckbox}
         />
-        <ListItemText primary="txt" />
+        <ListItemText primary={name} />
           <ListItemSecondaryAction>
-            <IconButton aria-label="Delete Todo">
+            <IconButton aria-label="Delete Todo" onClick={this.onDeleteFriend}>
               <DeleteOutlined />
             </IconButton>
           </ListItemSecondaryAction>
@@ -27,7 +51,9 @@ class TodoComponentItem extends Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    friendList: state.friendList
+  };
 }
 
 const connectedTodoComponentItem = connect(mapStateToProps)(TodoComponentItem);

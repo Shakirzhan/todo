@@ -1,1 +1,1 @@
-export * from './TodoComponentList';
+export * from './TodoComponentInput';

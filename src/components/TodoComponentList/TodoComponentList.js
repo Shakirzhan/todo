@@ -9,10 +9,11 @@ import { TodoComponentItem } from './TodoComponentItem';
 
 class TodoComponentList extends Component {
   render() {
+    const { friendList: { friendsById } } = this.props;
     return (
       <Paper style={{ marginBottom: 10 }}>
         <List>
-          <TodoComponentItem />
+          {!!friendsById.length && friendsById.map(friend => <TodoComponentItem id={friend.id} key={friend.id} name={friend.name} friendsById={friendsById} />)}
         </List>
       </Paper>
     );
@@ -20,7 +21,9 @@ class TodoComponentList extends Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    friendList: state.friendList
+  };
 }
 
 const connectedTodoComponent = connect(mapStateToProps)(TodoComponentList);

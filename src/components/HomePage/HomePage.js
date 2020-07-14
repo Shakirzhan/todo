@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 
 import { connect } from 'react-redux';
 
-import { TodoComponentInput } from '../TodoComponentInput';
+import { TodoComponentInput } from '../TodoComponentList';
 
 class HomePage extends Component {
   render () {
