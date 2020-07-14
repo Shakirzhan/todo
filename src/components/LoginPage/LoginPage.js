@@ -15,6 +15,8 @@ import { userActions } from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { LoaderComponent } from '../LoaderComponent';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -72,7 +74,7 @@ function handleSubmit(e, props) {
 function SignInSide(props) {
   const classes = useStyles();
 
-  const { login, password, dispatch, alert } = props;
+  const { login, password, loading, dispatch, alert } = props;
 
   const actions = bindActionCreators(userActions, dispatch);
   
@@ -85,47 +87,51 @@ function SignInSide(props) {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
+          
           <form className={classes.form} noValidate onSubmit={(e) => handleSubmit(e, props)}>
             {alert && <Alert severity="error">{alert.message}</Alert>}
-            
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Login"
-              name="login"
-              value={login}
-              onChange={(e) => actions.changeLogin(e.target.value)}
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => actions.changePassword(e.target.value)}
-              autoComplete="current-password"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
+            <LoaderComponent loading={loading}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Login"
+                name="login"
+                value={login}
+                onChange={(e) => actions.changeLogin(e.target.value)}
+                autoFocus
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => actions.changePassword(e.target.value)}
+                autoComplete="current-password"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                disabled={loading}
+              >
+                Sign In
+              </Button>
+            </LoaderComponent>
             <Box mt={5}>
               <Copyright />
             </Box>
           </form>
+          
         </div>
       </Grid>
     </Grid>
@@ -136,6 +142,7 @@ function mapStateToProps(state) {
   return {
     login: state.authentication.login,
     password: state.authentication.password,
+    loading: state.authentication.loading,
     alert: state.alert && state.alert.message && state.alert.message.response.data[0]
   };
 }

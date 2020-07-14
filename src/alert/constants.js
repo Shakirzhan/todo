@@ -1,5 +1,3 @@
-export const constants = {
-  SUCCESS: 'ALERT_SUCCESS',
-  ERROR: 'ALERT_ERROR',
-  CLEAR: 'ALERT_CLEAR'
-};
+export const SUCCESS = 'ALERT_SUCCESS';
+export const ERROR = 'ALERT_ERROR';
+export const CLEAR = 'ALERT_CLEAR';
