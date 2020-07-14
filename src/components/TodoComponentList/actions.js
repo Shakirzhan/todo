@@ -1,43 +1,36 @@
 import * as types from './constants';
 
-export function addFriend(name) {
+export function addItem(name) {
   return {
-    type: types.ADD_FRIEND,
+    type: types.ADD_ITEM,
     name
   };
 }
 
-export function addFriendCheckbox(id) {
+export function addItemCheckbox(id) {
   return {
-    type: types.CHECKBOX_FRIEND_ADD,
+    type: types.CHECKBOX_ITEM_ADD,
     id
   };
 }
 
-export function deleteFriend(id) {
+export function deleteItem(id) {
   return {
-    type: types.DELETE_FRIEND,
+    type: types.DELETE_ITEM,
     id
   };
 }
 
-export function deleteFriendCheckbox(id) {
+export function deleteItemCheckbox(id) {
   return {
-    type: types.CHECKBOX_FRIEND_DELETED,
+    type: types.CHECKBOX_ITEM_DELETED,
     id
   };
 }
 
-export function deleteFriendAll(ids) {
+export function deleteItemAll() {
   return {
-    type: types.DELETE_FRIEND_ALL,
-    ids
+    type: types.DELETE_ITEM_ALL
   };
 }
 
-export function starFriend(id) {
-  return {
-    type: types.STAR_FRIEND,
-    id
-  };
-}

@@ -10,38 +10,38 @@ import { bindActionCreators } from 'redux';
 
 import { connect } from 'react-redux';
 
-import * as FriendsActions from './actions';
+import * as ItemsActions from './actions';
 
 class TodoComponentItem extends Component {
-  onDeleteFriend = () => {
+  onDeleteItem = () => {
     const { dispatch, id } = this.props;
-    const action = bindActionCreators(FriendsActions, dispatch);
-    action.deleteFriend(id);
+    const action = bindActionCreators(ItemsActions, dispatch);
+    action.deleteItem(id);
   }
 
   onChangeCheckbox = () => {
-    const { dispatch, id, friendList: { friends } } = this.props;
-    const action = bindActionCreators(FriendsActions, dispatch);
-    if(!friends.find(friend => friend === id)) {
-      action.addFriendCheckbox(id);
+    const { dispatch, id, checkList: { checkList } } = this.props;
+    const action = bindActionCreators(ItemsActions, dispatch);
+    if(!checkList.find(item => item === id)) {
+      action.addItemCheckbox(id);
     } else {
-      action.deleteFriendCheckbox(id);
+      action.deleteItemCheckbox(id);
     }
   }
 
   render() {
-    const { name, id, friendList: { friends } } = this.props;
+    const { name, id, checkList: { checkList } } = this.props;
     
     return (
       <ListItem>
         <Checkbox
           disableRipple
-          checked={ !!friends.find(friend => friend === id) }
+          checked={ !!checkList.find(item => item === id) }
           onChange={this.onChangeCheckbox}
         />
         <ListItemText primary={name} />
           <ListItemSecondaryAction>
-            <IconButton aria-label="Delete Todo" onClick={this.onDeleteFriend}>
+            <IconButton aria-label="Delete Todo" onClick={this.onDeleteItem}>
               <DeleteOutlined />
             </IconButton>
           </ListItemSecondaryAction>
@@ -52,7 +52,7 @@ class TodoComponentItem extends Component {
 
 function mapStateToProps(state) {
   return {
-    friendList: state.friendList
+    checkList: state.checkList
   };
 }
 

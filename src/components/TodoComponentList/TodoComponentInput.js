@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { TodoComponentList } from './TodoComponentList';
-import * as FriendsActions from './actions';
+import * as ItemsActions from './actions';
 
 class TodoComponentInput extends Component {
   state = {
@@ -16,15 +16,15 @@ class TodoComponentInput extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { dispatch } = this.props;
-    const action = bindActionCreators(FriendsActions, dispatch);
-    action.addFriend(this.state.name);
+    const action = bindActionCreators(ItemsActions, dispatch);
+    action.addItem(this.state.name);
     this.setState({ name: '' });
   }
 
   onDelete = () => {
     const { dispatch } = this.props;
-    const action = bindActionCreators(FriendsActions, dispatch);
-    action.deleteFriendAll([1,3]);
+    const action = bindActionCreators(ItemsActions, dispatch);
+    action.deleteItemAll();
   }
 
   render () {

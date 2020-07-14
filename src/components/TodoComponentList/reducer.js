@@ -1,8 +1,8 @@
 import * as types from './constants';
 
 const initialState = {
-  friends: [],
-  friendsById: [
+  checkList: [],
+  mainList: [
     {
       id: 1,
       name: 'Хлеб'
@@ -18,40 +18,40 @@ const initialState = {
   ]
 };
 
-export function friends(state = initialState, action) {
+export function checkList(state = initialState, action) {
   switch (action.type) {
 
-    case types.ADD_FRIEND:
-      const newId = state.friendsById.length + 1;
-      console.log('newId', newId);
+    case types.ADD_ITEM:
+      const newId = state.mainList.length + 1;
       return {
         ...state,
-        friendsById: state.friendsById.concat({ id: newId, name: action.name })
+        mainList: state.mainList.concat({ id: newId, name: action.name })
       }
 
-    case types.DELETE_FRIEND:
+    case types.DELETE_ITEM:
       return {
         ...state,
-        friends: state.friends.filter(id => id !== action.id),
-        friendsById: state.friendsById.filter(friend => friend.id !== action.id)
+        checkList: state.checkList.filter(id => id !== action.id),
+        mainList: state.mainList.filter(item => item.id !== action.id)
       }
 
-      case types.DELETE_FRIEND_ALL:
+      case types.DELETE_ITEM_ALL:
         return {
           ...state,
-          friendsById: state.friendsById.filter(friend => !state.friends.includes(friend.id))
+          checkList: state.checkList.filter(item => !state.checkList.includes(item)), 
+          mainList: state.mainList.filter(item => !state.checkList.includes(item.id))
         }
 
-      case types.CHECKBOX_FRIEND_ADD:
+      case types.CHECKBOX_ITEM_ADD:
         return {
           ...state,
-          friends: state.friends.concat(action.id)
+          checkList: state.checkList.concat(action.id)
         }
 
-      case types.CHECKBOX_FRIEND_DELETED:
+      case types.CHECKBOX_ITEM_DELETED:
         return {
           ...state,
-          friends: state.friends.filter(friend => friend !== action.id)
+          checkList: state.checkList.filter(item => item !== action.id)
         }
 
     default:

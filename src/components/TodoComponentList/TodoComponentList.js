@@ -9,11 +9,11 @@ import { TodoComponentItem } from './TodoComponentItem';
 
 class TodoComponentList extends Component {
   render() {
-    const { friendList: { friendsById } } = this.props;
+    const { checkList: { mainList } } = this.props;
     return (
       <Paper style={{ marginBottom: 10 }}>
         <List>
-          {!!friendsById.length && friendsById.map(friend => <TodoComponentItem id={friend.id} key={friend.id} name={friend.name} friendsById={friendsById} />)}
+          {!!mainList.length && mainList.map(item => <TodoComponentItem id={item.id} key={item.id} name={item.name} mainList={mainList} />)}
         </List>
       </Paper>
     );
@@ -22,7 +22,7 @@ class TodoComponentList extends Component {
 
 function mapStateToProps(state) {
   return {
-    friendList: state.friendList
+    checkList: state.checkList
   };
 }
 

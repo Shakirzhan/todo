@@ -2,12 +2,12 @@ import { combineReducers } from 'redux';
 
 import { authentication } from '../components/LoginPage/reducer'
 import { alert } from '../alert';
-import { friends as friendList } from '../components/TodoComponentList/reducer'
+import { checkList } from '../components/TodoComponentList/reducer'
 
 const rootReducer = combineReducers({
   authentication,
   alert,
-  friendList
+  checkList
 });
 
 export default rootReducer;
