@@ -1,16 +1,9 @@
 import * as types from './constants';
-import { userService } from './services';
-import { alertActions } from '../../alert';
+import * as userService from './services';
+import * as alertActions from '../../alert';
 import { history } from '../../helpers';
 
-export const userActions = {
-    login,
-    logout,
-    changeLogin,
-    changePassword
-};
-
-function login(login, password) {
+export const login = (login, password) => {
     return dispatch => {
         dispatch(loginRequest({login}));
         userService.login(login, password)
@@ -24,41 +17,41 @@ function login(login, password) {
     };  
 }
 
-function loginRequest(user) { 
+export const loginRequest = user => { 
     return { 
         type: types.LOGIN_REQUEST, 
         user 
     } 
 }
 
-function loginSuccess(user) { 
+export const loginSuccess = user => { 
     return { 
         type: types.LOGIN_SUCCESS, 
         user 
     } 
 }
 
-function loginFailure(error) { 
+export const loginFailure = error => { 
     return { 
         type: types.LOGIN_FAILURE, 
         error 
     } 
 }
 
-function logout() {
+export const logout = () => {
     userService.logout();
     history.push('/');
     return { type: types.LOGOUT };
 }
 
-export function changeLogin(login) {
+export const changeLogin = login => {
     return {
       type: types.CHANGE_LOGIN,
       login
     };
   }
 
-export function changePassword(password) {
+export const changePassword = password => {
     return {
       type: types.CHANGE_PASSWORD,
       password

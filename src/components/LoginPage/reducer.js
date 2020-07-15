@@ -3,7 +3,7 @@ import * as types from './constants';
 let user = JSON.parse(localStorage.getItem('user'));
 const initialState = user ? { loggedIn: true, user } : { login: '', password: '', loading: false};
 
-export function authentication(state = initialState, action) {
+export const authentication = (state = initialState, action) => {
   switch (action.type) {
     case types.LOGIN_REQUEST:
       return {

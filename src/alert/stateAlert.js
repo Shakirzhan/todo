@@ -1,6 +1,6 @@
 import * as types from './constants';
 
-export function alert(state = {}, action) {
+export const alert = (state = {}, action) => {
   switch (action.type) {
     case types.SUCCESS:
       return {

@@ -1,19 +1,13 @@
 import * as types from './constants';
 
-export const alertActions = {
-    success,
-    error,
-    clear
-};
-
-function success(message) {
+export const success = message => {
     return { type: types.SUCCESS, message };
 }
 
-function error(message) {
+export const error = message => {
     return { type: types.ERROR, message };
 }
 
-function clear() {
+export const clear =() => {
     return { type: types.CLEAR };
 }

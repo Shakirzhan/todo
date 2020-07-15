@@ -2,25 +2,18 @@ import * as types from './constants';
 
 const initialState = {
   checkList: [],
-  mainList: [
-    {
-      id: 1,
-      name: 'Хлеб'
-    },
-    {
-      id: 2,
-      name: 'Молоко'
-    },
-    {
-      id: 3,
-      name: 'Спички'
-    }
-  ]
+  mainList: []
 };
 
-export function checkList(state = initialState, action) {
+export const checkList = (state = initialState, action) => {
   switch (action.type) {
 
+    case types.ITEM_FETCHED:
+      return {
+        ...state,
+        mainList: action.mainList
+      }
+  
     case types.ADD_ITEM:
       const newId = state.mainList.length + 1;
       return {

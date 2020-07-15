@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 import { TodoComponentList } from './TodoComponentList';
 import * as ItemsActions from './actions';
-import { userActions } from '../LoginPage/actions';
+import * as userActions from '../LoginPage/actions';
 
 class TodoComponentInput extends Component {
   state = {
