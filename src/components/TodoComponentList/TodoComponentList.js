@@ -7,7 +7,14 @@ import { connect } from 'react-redux';
 
 import { TodoComponentItem } from './TodoComponentItem';
 
+import * as userActions from './actions';
+
 class TodoComponentList extends Component {
+  componentDidMount = () => {
+    const { dispatch } = this.props;
+    dispatch(userActions.fetchMainList());
+  }
+
   render() {
     const { checkList: { mainList } } = this.props;
     return (

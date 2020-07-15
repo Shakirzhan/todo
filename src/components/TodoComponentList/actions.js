@@ -1,4 +1,5 @@
 import * as types from './constants';
+import * as userService from './services';
 
 export const addItem = name => {
   return {
@@ -34,9 +35,19 @@ export const deleteItemAll = () => {
   };
 }
 
-export const getMainList = () => {
+export const fetchMainList = () => {
+  return dispatch => {
+    userService.getMainList()
+    .then(list => {
+        dispatch(mainList(list));
+    });
+  }
+}
+
+export const mainList = mainList => { 
   return { 
-    type: types.ITEM_FETCHED 
-  };
+      type: types.ITEM_FETCHED, 
+      mainList: mainList.data
+  } 
 }
 
