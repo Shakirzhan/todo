@@ -15,10 +15,9 @@ export const checkList = (state = initialState, action) => {
       }
   
     case types.ADD_ITEM:
-      const newId = state.mainList.length + 1;
       return {
         ...state,
-        mainList: state.mainList.concat({ id: newId, name: action.name })
+        mainList: state.mainList.concat(action.item)
       }
 
     case types.DELETE_ITEM:

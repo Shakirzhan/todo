@@ -2,9 +2,18 @@ import * as types from './constants';
 import * as userService from './services';
 
 export const addItem = name => {
+  return dispatch => {
+    userService.addItem(name)
+    .then(item => {
+        dispatch(addItemSuccess(item));
+    });
+  };
+}
+
+export const addItemSuccess = item => {
   return {
     type: types.ADD_ITEM,
-    name
+    item: item.data
   };
 }
 

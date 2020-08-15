@@ -1,5 +1,7 @@
 import axios from "axios";
 
-export default axios.create({
+const API = axios.create({
   baseURL: "http://shakirzhan.ru/api/"
 });
+
+export default API;
