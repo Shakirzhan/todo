@@ -1,9 +1,15 @@
 import API from '../../utils/API';
 
-export const getMainList = () => {
-    //API.defaults.headers.common['Authorization'] = "Bearer aqY6dWXR3iw1IBDioVcd8NSt7pWwjdqa";
+let token = localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')) && JSON.parse(localStorage.getItem('user'));
 
-    const list = API.get('list');
+token = token ? token.slice(0, token.lenght) : null;
+
+export const getMainList = () => {
+    const list = API.get('list', {
+        params: {
+            hash: token
+        }
+      });
 
     return list.then(list => {
         return list

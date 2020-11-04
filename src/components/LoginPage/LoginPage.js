@@ -143,7 +143,7 @@ function mapStateToProps(state) {
     login: state.authentication.login,
     password: state.authentication.password,
     loading: state.authentication.loading,
-    alert: state.alert && state.alert.message && state.alert.message.response.data[0]
+    alert: state.alert && state.alert.message && state.alert.message.response && state.alert.message.response.data[0]
   };
 }
 
